@@ -36,7 +36,15 @@ namespace PlanAndSchedule.Core.Service
 
         public void UpdateTask(Task task)
         {
-            _taskRepository.Update(task);
+            Task t = _taskRepository.GetById(task.Id);
+            t.Text = task.Text;
+            t.Type = task.Type;
+            t.StartDate = task.StartDate;
+            t.SortOrder = task.SortOrder;
+            t.Progress = task.Progress;
+            t.ParentId = task.ParentId;
+            t.Duration = task.Duration;
+            _taskRepository.Update(t);
         }
 
         public void DeleteTask(Task task)
@@ -62,7 +70,11 @@ namespace PlanAndSchedule.Core.Service
 
         public void UpdateLink(Link link)
         {
-            _linkRepository.Update(link);
+            Link l = _linkRepository.GetById(link.Id);
+            l.Type = link.Type;
+            l.SourceTaskId = link.SourceTaskId;
+            l.TargetTaskId = link.TargetTaskId;
+            _linkRepository.Update(l);
         }
 
         public void DeleteLink(Link link)

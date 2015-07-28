@@ -62,7 +62,7 @@ namespace PlanAndSchedule.Controllers
         [HttpPost]
         public ContentResult Save(FormCollection form)
         {
-            var dataActions = GanttRequest.Parse(form, Request.QueryString["gantt_mode"]);
+            var dataActions = DhtmlxRequest.Parse(form, Request.QueryString["gantt_mode"]);
             try
             {
                 foreach (var ganttData in dataActions)
@@ -81,7 +81,7 @@ namespace PlanAndSchedule.Controllers
             catch
             {
                 // return error to client if something went wrong
-                dataActions.ForEach(g => { g.Action = GanttAction.Error; });
+                dataActions.ForEach(g => { g.Action = DhtmlxAction.Error; });
             }
             return GanttRespose(dataActions);
         }
@@ -90,25 +90,25 @@ namespace PlanAndSchedule.Controllers
         /// Update gantt tasks
         /// </summary>
         /// <param name="ganttData">GanttData object</param>
-        private void UpdateTasks(GanttRequest ganttData)
+        private void UpdateTasks(DhtmlxRequest ganttData)
         {
             switch (ganttData.Action)
             {
-                case GanttAction.Inserted:
+                case DhtmlxAction.Inserted:
                     // add new gantt task entity
                     _ganttService.InsertTask(ganttData.UpdatedTask);
                     break;
-                case GanttAction.Deleted:
+                case DhtmlxAction.Deleted:
                     // remove gantt tasks
                     _ganttService.DeleteTask(_ganttService.GetTask(ganttData.SourceId));
                     break;
-                case GanttAction.Updated:
+                case DhtmlxAction.Updated:
                     // update gantt task
                     _ganttService.UpdateTask(ganttData.UpdatedTask);
                     //db.Entry(db.Tasks.Find(ganttData.UpdatedTask.Id)).CurrentValues.SetValues(ganttData.UpdatedTask);
                     break;
                 default:
-                    ganttData.Action = GanttAction.Error;
+                    ganttData.Action = DhtmlxAction.Error;
                     break;
             }
         }
@@ -117,25 +117,25 @@ namespace PlanAndSchedule.Controllers
         /// Update gantt links
         /// </summary>
         /// <param name="ganttData">GanttData object</param>
-        private void UpdateLinks(GanttRequest ganttData)
+        private void UpdateLinks(DhtmlxRequest ganttData)
         {
             switch (ganttData.Action)
             {
-                case GanttAction.Inserted:
+                case DhtmlxAction.Inserted:
                     // add new gantt link entity
                     _ganttService.InsertLink(ganttData.UpdatedLink);
                     break;
-                case GanttAction.Deleted:
+                case DhtmlxAction.Deleted:
                     // remove gantt link
                     _ganttService.DeleteLink(_ganttService.GetLink(ganttData.SourceId));
                     break;
-                case GanttAction.Updated:
+                case DhtmlxAction.Updated:
                     // update gantt link
                     _ganttService.UpdateLink(ganttData.UpdatedLink);
                     //db.Entry(db.Tasks.Find(ganttData.UpdatedTask.Id)).CurrentValues.SetValues(ganttData.UpdatedTask);
                     break;
                 default:
-                    ganttData.Action = GanttAction.Error;
+                    ganttData.Action = DhtmlxAction.Error;
                     break;
             }
         }
@@ -145,7 +145,7 @@ namespace PlanAndSchedule.Controllers
         /// </summary>
         /// <param name="ganttData">Gantt data</param>
         /// <returns>XML response</returns>
-        private ContentResult GanttRespose(List<GanttRequest> ganttDataCollection)
+        private ContentResult GanttRespose(List<DhtmlxRequest> ganttDataCollection)
         {
             var actions = new List<XElement>();
             foreach (var ganttData in ganttDataCollection)
@@ -153,7 +153,8 @@ namespace PlanAndSchedule.Controllers
                 var action = new XElement("action");
                 action.SetAttributeValue("type", ganttData.Action.ToString().ToLower());
                 action.SetAttributeValue("sid", ganttData.SourceId);
-                action.SetAttributeValue("tid", (ganttData.Mode == GanttMode.Tasks) ? ganttData.UpdatedTask.Id : ganttData.UpdatedLink.Id);
+                action.SetAttributeValue("tid", (ganttData.Action != DhtmlxAction.Inserted) ? ganttData.SourceId :
+                    (ganttData.Mode == GanttMode.Tasks) ? ganttData.UpdatedTask.Id : ganttData.UpdatedLink.Id); 
                 actions.Add(action);
             }
 

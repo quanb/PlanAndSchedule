@@ -58,7 +58,9 @@
     <Compile Include="Object\Link.cs" />
     <Compile Include="Object\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\EventService.cs" />
     <Compile Include="Service\GanttService.cs" />
+    <Compile Include="Service\IEventService.cs" />
     <Compile Include="Service\IGanttService.cs" />
   </ItemGroup>
   <ItemGroup>

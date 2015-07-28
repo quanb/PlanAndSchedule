@@ -16,7 +16,7 @@ namespace PlanAndSchedule
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Schedule", action = "Index"}
+                defaults: new { controller = "Event", action = "Index"}
             );
         }
     }

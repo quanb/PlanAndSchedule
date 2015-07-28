@@ -67,6 +67,7 @@ namespace PlanAndSchedule.App_Start
             kernel.Bind<IDbContext>().To<PaSDbContext>().InRequestScope();
             kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>)).InRequestScope();
             kernel.Bind<IGanttService>().To<GanttService>();
+            kernel.Bind<IEventService>().To<EventService>();
         }        
     }
 }
