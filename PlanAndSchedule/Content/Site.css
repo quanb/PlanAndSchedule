@@ -1,6 +1,23 @@
 ﻿html, body {
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  font-family: "lucida sans", arial, sans-serif; 
+  font-size: 9pt; 
+
+}
+
+div#tabs {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+
+div#tab-task {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
 }

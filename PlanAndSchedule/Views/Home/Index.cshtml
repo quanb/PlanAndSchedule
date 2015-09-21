@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PlanAndSchedule</title>
+    <!-- jquery library -->
+    <script src="@Url.Content("~/Scripts/jquery-1.8.2.js")"></script>
+
+    <!-- jquery ui library -->
+    <link href="@Url.Content("~/Content/jqueryuicustom/css/sunny/jquery-ui-1.9.2.custom.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-ui.js")"></script>
+
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+</head>
+<body>
+    <script src="@Url.Content("~/Scripts/home.js")"></script>
+    <div id="tabs">
+        <ul>
+            <li><a href="#tab-project">Project</a></li>
+            <li><a href="#tab-task">Task</a></li>
+        </ul>
+        <div id="tab-project" class="tab">
+            @Html.Partial("_Projects")
+        </div>
+        <div id="tab-task" class="tab">
+            @Html.Partial("_Tasks")
+        </div>
+    </div>
+</body>
+</html>

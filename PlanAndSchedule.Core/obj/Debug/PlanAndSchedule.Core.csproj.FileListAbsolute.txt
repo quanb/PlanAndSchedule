@@ -5,6 +5,6 @@ D:\IT\workspace\visual studio 2013\Projects\PlanAndSchedule\PlanAndSchedule.Core
 D:\IT\workspace\visual studio 2013\Projects\PlanAndSchedule\PlanAndSchedule.Core\bin\Debug\EntityFramework.SqlServer.dll
 D:\IT\workspace\visual studio 2013\Projects\PlanAndSchedule\PlanAndSchedule.Core\bin\Debug\EntityFramework.xml
 D:\IT\workspace\visual studio 2013\Projects\PlanAndSchedule\PlanAndSchedule.Core\bin\Debug\EntityFramework.SqlServer.xml
-D:\IT\workspace\visual studio 2013\Projects\PlanAndSchedule\PlanAndSchedule.Core\obj\Debug\PlanAndSchedule.Core.csprojResolveAssemblyReference.cache
 D:\IT\workspace\visual studio 2013\Projects\PlanAndSchedule\PlanAndSchedule.Core\obj\Debug\PlanAndSchedule.Core.dll
 D:\IT\workspace\visual studio 2013\Projects\PlanAndSchedule\PlanAndSchedule.Core\obj\Debug\PlanAndSchedule.Core.pdb
+D:\IT\workspace\visual studio 2013\Projects\PlanAndSchedule\PlanAndSchedule.Core\obj\Debug\PlanAndSchedule.Core.csprojResolveAssemblyReference.cache

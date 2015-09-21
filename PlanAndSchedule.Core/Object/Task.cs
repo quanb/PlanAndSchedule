@@ -20,7 +20,10 @@ namespace PlanAndSchedule.Core.Object
         public virtual int SortOrder 
         { get; set; }
 
-        public virtual int? ParentId 
+        public virtual long? ParentId 
+        { get; set; }
+
+        public virtual int ProjectId
         { get; set; }
     }
 }
